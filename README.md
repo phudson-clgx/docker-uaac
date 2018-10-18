@@ -232,8 +232,6 @@ _INFO:  This job only UPDATES (in another words "appends") UAA grant types and a
 
 ## How-To Get UAA Client
 
-[Create UAA Client](# How-To Update UAA Client
-
 [Get UAA Client](https://jkci.corelogic.net/job/IDC/job/Self-Service/job/UAA/job/Get%20UAA%20Client/)
 
 ### "Building" Get Job
