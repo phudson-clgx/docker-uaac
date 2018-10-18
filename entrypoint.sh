@@ -37,4 +37,22 @@ if [ "$PCFENV" == "preprod" ]; then
         /root/uaa-get.sh $CLIENT
     fi
 fi
+if [ "$PCFENV" == "prod" ]; then
+    /root/uaa-login.sh prod 2>/dev/null
+    if [ "$ACTION" == "update" ]; then
+      echo "Unable to update in prod, if you know what you're doing, you'll find the magic flag"
+      exit 1
+    fi
+    if [ "$ACTION" == "add" ]; then
+      if [ -z "$CLIENT" ] || [ -z "$SCOPE" ] || [ -z "$GRANTS" ] || [ -z "$AUTHORITIES" ] ; then
+          echo "Action ADD given, but no additional grants or authorities provided"
+          printUsageAndExit
+      else
+        /root/uaa-add.sh $CLIENT $GRANTS $AUTHORITIES $SCOPE $PCFENV
+      fi
+    fi
+    if [ "$ACTION" == "get" ]; then
+        /root/uaa-get.sh $CLIENT
+    fi
+fi
 #tail -f /dev/null

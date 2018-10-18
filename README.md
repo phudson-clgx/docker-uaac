@@ -87,8 +87,30 @@ docker build -t docker-uaac . && docker tag docker-uaac hub2.corelogic.net/docke
 ```
 node('dck01') {
     stage('Pull image') {
-      sh docker pull hub2.corelogic.net/docker-uaac
+      sh "docker pull hub2.corelogic.net/docker-uaac"
+    }
+    stage('Run Container / Add UAA Account') {
       sh "docker run -e ACTION=\"add\" -e PCFENV=\"${params.Environment}\" -e SCOPE=\"${params.scope}\" -e CLIENT=\"${params.client}\" -e GRANTS=\"${params.authorized_grant_types}\" -e AUTHORITIES=\"${params.authorities}\" --rm  hub2.corelogic.net/docker-uaac"
+    }
+}
+```
+```
+node('dck01') {
+    stage('Pull image') {
+      sh "docker pull hub2.corelogic.net/docker-uaac"
+    }
+    stage('Run Container / Update UAA Account') {
+      sh "docker run -e ACTION=\"update\" -e PCFENV=\"${params.Environment}\" -e CLIENT=\"${params.client}\" -e GRANTS=\"${params.authorized_grant_types}\" -e AUTHORITIES=\"${params.authorities}\" --rm  hub2.corelogic.net/docker-uaac"
+    }
+}
+```
+```
+node('dck01') {
+    stage('Pull image') {
+      sh "docker pull hub2.corelogic.net/docker-uaac"
+    }
+    stage('Run Container / Get UAA Account') {
+      sh "docker run -e ACTION=\"get\" -e PCFENV=\"${params.Environment}\" -e CLIENT=\"${params.client}\"  --rm  hub2.corelogic.net/docker-uaac"
     }
 }
 ```
