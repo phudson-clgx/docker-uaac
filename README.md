@@ -19,12 +19,9 @@
       - [Required information](#required-information-1)
       - [Steps](#steps-1)
   - [How-To Get UAA Client](#how-to-get-uaa-client)
-    - ["Building" Update Job](#building-update-job-1)
+    - ["Building" Get Job](#building-get-job)
       - [Required information](#required-information-2)
       - [Steps](#steps-2)
-    - ["Building" Get Job](#building-get-job)
-      - [Required information](#required-information-3)
-      - [Steps](#steps-3)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -98,7 +95,7 @@ node('dck01') {
 2. Jobs must be run on dck01 (this is already being enforced)
 
 ## How-To Create UAA Client
-[Create UAA Client](https://jkci.corelogic.net/job/IDC/job/Self-Service/job/UAA/job/Update%20UAA%20Client/)
+[Create UAA Client](https://jkci.corelogic.net/job/IDC/job/Self-Service/job/UAA/job/Create%20UAA%20Client/)
 
 ### "Building" Create Job
 
@@ -237,37 +234,7 @@ _INFO:  This job only UPDATES (in another words "appends") UAA grant types and a
 
 [Create UAA Client](# How-To Update UAA Client
 
-[Get UAA Client](https://jkci.corelogic.net/job/IDC/job/Self-Service/job/UAA/job/Update%20UAA%20Client/)
-
-### "Building" Update Job
-
-_INFO:  This job only UPDATES (in another words "appends") UAA grant types and authorities. It does not replace, remove, or revoke any existing grants/authorities on the UAA account. If you require revocation of a certain grant, authority, or scope please reach out to the `#devops-requests` channel in Slack for assistance_
-
-#### Required information
-
-> ** VERY IMPORTANT **
-<br><br> ** !!!DO NOT DUPLICATE GRANT TYPES, IF YOU DO NOT KNOW THE EXISTING TYPES ALLOWED, USE THE GET UAA CLIENT SELF SERVICE JOB!!! **
-
-
-| Option | Description | Example
-|---------|------------|---------
-| `Environtment`      | Preprod only, CAB required for PROD updates|`preprod`
-|`client`                | Client name for UAA client to update.               | `myapp-client`
-|`authorized_grant_types`| Comma Delimited list of grant types to add. <br> Generally the default option is a good starting point. | `client_credentials,password,refresh_token`
-|`authorities`           | Comma Delimited list of authorities to add.                                                        |`myapp-billing-service.application,myapp-email-service.application,myapp-scheduler-service.application`
-
-#### Steps
-
-1. Click Build with Parameters
-
-![Build with Parameters](docs/images/update_build_with.png)
-
-2. Fill in required info using above table as reference
-
-![Create UAA Client Completed](docs/images/update_uaa.png)
-
-3. Verify your additions were applied successfully either by checking the Console output for your last build, or use the [Get UAA Jenkins Job](https://jkci.corelogic.net/job/IDC/job/Self-Service/job/UAA/job/Get%20UAA%20Client/)
-)
+[Get UAA Client](https://jkci.corelogic.net/job/IDC/job/Self-Service/job/UAA/job/Get%20UAA%20Client/)
 
 ### "Building" Get Job
 
