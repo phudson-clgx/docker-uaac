@@ -28,7 +28,7 @@ docker build -t docker-uaac . && docker tag docker-uaac hub2.corelogic.net/docke
 **Variables are case sensitive**
 
 | Variable      | Options | Description          
-| ------------- |-------------|----------
+|-------------|-------------|----------
 | `ACTION`*     | `add` `update`| `add` will create a new UAA client, `update` will update a UAA client with provided information
 | `PCFENV`*      | `preprod` `prod`    | Use `preprod` to add or update a client in that env, `prod` can only be used to add.    
 | `SCOPE` | `comma delimited string`   | Pass `string` in a comma delimited list
@@ -75,12 +75,12 @@ node('dck01') {
 #### Required information
 
 | Option | Description | Example
-|---------|------------|
-| `Environtment`*     | Options include preprod and prod | `preprod`
-|`client`| Client name for UAA client. | `myapp-client`
-|`scope`| Comma Delimited list of scopes to add. | `uaa.resource,myapp-account-service.application`
-|`authorized_grant_types`| Comma Delimited list of grant types to add. Generally the default option is a good starting point. | `client_credentials,password,refresh_token`
-|`authorities`|Comma Delimited list of authorities to add.|`myapp-billing-service.application,myapp-email-service.application,myapp-scheduler-service.application`
+|---------|------------|---------
+| `Environtment`*        | Options include preprod and prod                                                                   |`preprod`
+|`client`                | Client name for UAA client.                                                                        | `myapp-client`
+|`scope`                 | Comma Delimited list of scopes to add.                                                             | `uaa.resource,myapp-account-service.application`
+|`authorized_grant_types`| Comma Delimited list of grant types to add. <br> Generally the default option is a good starting point. | `client_credentials,password,refresh_token`
+|`authorities`           | Comma Delimited list of authorities to add.                                                        |`myapp-billing-service.application,myapp-email-service.application,myapp-scheduler-service.application`
 
 ![Create UAA Client Completed](docs/images/create_uaa.png)
 
